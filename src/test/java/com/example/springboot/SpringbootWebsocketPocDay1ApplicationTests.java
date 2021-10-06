@@ -26,6 +26,7 @@ import org.springframework.web.socket.sockjs.client.SockJsClient;
 import org.springframework.web.socket.sockjs.client.Transport;
 import org.springframework.web.socket.sockjs.client.WebSocketTransport;
 
+import com.example.springboot.config.WebSocketConfig;
 import com.example.springboot.event.Greeting;
 import com.example.springboot.request.HelloMessage;
 
@@ -89,7 +90,7 @@ class SpringbootWebsocketPocDay1ApplicationTests {
 			}
 		};
 
-		this.stompClient.connect("ws://localhost:{port}/gs-guide-websocket", this.headers, handler, this.port);
+		this.stompClient.connect("ws://localhost:{port}" + WebSocketConfig.STOM_SOCKET_CONNECTION_ENDPOINT, this.headers, handler, this.port);
 
 		if (latch.await(3, TimeUnit.SECONDS)) {
 			if (failure.get() != null) {

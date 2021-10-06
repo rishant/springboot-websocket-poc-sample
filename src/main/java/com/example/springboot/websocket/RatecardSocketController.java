@@ -14,14 +14,14 @@ public class RatecardSocketController {
 
 	///app/hello
     @MessageMapping("/hello")
-    @SendTo(WebSocketConfig.TOPIC + "/greetings")
+    @SendTo(WebSocketConfig.STOM_TPOIC + "/greetings")
     public Greeting greeting(HelloMessage message) throws Exception {
       Thread.sleep(1000); // simulated delay
       return new Greeting("Hello, " + HtmlUtils.htmlEscape(message.getName()) + "!");
     }
     
     @MessageMapping("/ratecard")
-    @SendTo(WebSocketConfig.RC_NOTIFICATION_TOPIC + "/notify")
+    @SendTo(WebSocketConfig.STOM_TPOIC_RC_NOTIFICATION + "/notify")
     public Greeting notifiation(HelloMessage message) throws Exception {
     	Thread.sleep(1000); // simulated delay
     	return new Greeting("Hello, " + HtmlUtils.htmlEscape(message.getName()) + "!");
